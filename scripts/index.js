@@ -22,19 +22,37 @@ const memberDisplayEl = document.getElementById('memberDisplay');
 const categorySelectorEl = document.getElementById('categorySelector');
 categorySelectorEl.onchange = onCategorySelectorChange;
 
+
+const emptyMessage = new Option("-----")
+memberDisplayEl.appendChild(emptyMessage)
+
 function onCategorySelectorChange() {
     const selectedValue = categorySelectorEl.value
 
-    console.log(selectedValue)
-
     if (selectedValue == 'drinks') {
-        console.log(menu.drinks)
+        getMenuOptions(menu.drinks)
     } if (selectedValue == 'entrees') {
-        console.log(menu.entrees)
+        for (let i = 0; i < menu.entrees.length; i++) {
+            getMenuOptions(menu.entrees)
+        }
     } if (selectedValue == 'desserts') {
-        console.log(menu.desserts)
+        for (let i = 0; i < menu.desserts.length; i++) {
+            getMenuOptions(menu.desserts)
+        }
     } else if (selectedValue == "") {
-        alert("Select a category")
+        memberDisplayEl.options.length = 0;
+        memberDisplayEl.size = 0;
+        const emptyMessage = new Option("-----")
+        memberDisplayEl.appendChild(emptyMessage)
     }
 
+}
+
+function getMenuOptions(itemsList) {
+    memberDisplayEl.size = itemsList.length;
+    memberDisplayEl.options.length = 0;
+    for (let i = 0; i < itemsList.length; i++) {
+        const memberListbox = new Option(itemsList[i]);
+        memberDisplayEl.appendChild(memberListbox);
+    }
 }
