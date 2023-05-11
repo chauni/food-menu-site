@@ -32,20 +32,15 @@ function onCategorySelectorChange() {
     if (selectedValue == 'drinks') {
         getMenuOptions(menu.drinks)
     } if (selectedValue == 'entrees') {
-        for (let i = 0; i < menu.entrees.length; i++) {
             getMenuOptions(menu.entrees)
-        }
     } if (selectedValue == 'desserts') {
-        for (let i = 0; i < menu.desserts.length; i++) {
-            getMenuOptions(menu.desserts)
-        }
+        getMenuOptions(menu.desserts)
     } else if (selectedValue == "") {
         memberDisplayEl.options.length = 0;
         memberDisplayEl.size = 0;
         const emptyMessage = new Option("-----")
         memberDisplayEl.appendChild(emptyMessage)
     }
-
 }
 
 function getMenuOptions(itemsList) {
