@@ -43,6 +43,31 @@ function onCategorySelectorChange() {
     }
 }
 
+/* ^ alternative way
+
+function onCategorySelectorChange() {
+    const selectedValue = categorySelectorEl.value
+
+    const categoryMembers = menu[selectedCategory]
+
+    ** possible bc the property values have the same name as the option value (in the HTML)
+    ** less error prone and more abstract; gives the ability to potentially add other categories later on
+    ** dot notation specifically looks for a property name associated with the array
+}
+
+function getMenuOptions(itemsList) {
+    memberDisplayEl.size = itemsList.length;
+    if (itemsList) {
+    memberDisplayEl.options.length = 0;
+    for (let i = 0; i < itemsList.length; i++) {
+        const memberListbox = new Option(itemsList[i]);
+        memberDisplayEl.appendChild(memberListbox);
+    }
+}
+}
+    ** clears the 'select a category' listbox to remove previously selected items
+*/
+
 function getMenuOptions(itemsList) {
     memberDisplayEl.size = itemsList.length;
     memberDisplayEl.options.length = 0;
